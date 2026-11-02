@@ -20,6 +20,21 @@ def faz_jogada(tabuleiro, linha, coluna):
     elif tabuleiro[linha][coluna]==1:
         tabuleiro[linha][coluna]='X'
     return tabuleiro
+
+def posiciona_frota(dic):
+    tabuleiro=[[0*10]*10]
+    l=0
+    c=0
+    for tipo in dic.keys():
+        for navio in dic[tipo]:
+            for pos in dic[tipo][navio]:
+                l=dic[tipo][navio][pos][0]
+                c=dic[tipo][navio][pos][1]
+                tabuleiro[l][c] = 1
+    return tabuleiro
+            
+            
+         
     
     
 
