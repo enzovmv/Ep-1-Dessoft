@@ -32,5 +32,34 @@ def posiciona_frota(dic):
                 c=dic[tipo][navio][pos][1]
                 tabuleiro[l][c] = 1
     return tabuleiro
-            
+
+
+def afundados(dic, tabuleiro):
+    i=0
+    na=0
+    for tipo in dic.keys(): 
+        for navio in dic[tipo]:
+            i=0
+            for l,c in navio:
+                if tabuleiro[l][c] !='X':
+                    i=1
+                    break
+            if i==0:
+                na +=1
+    return na
+
+
+def posicao_valida(info_navios, linha, coluna, orientacao, tamanho): 
+    posicao = define_posicoes(linha, coluna, orientacao, tamanho)
+    for linha, coluna in posicao:
+        if linha < 0 or linha > 9 or coluna < 0 or coluna > 9:
+            return False
+    for navio in info_navios.values(): 
+        for posicao in navio:
+            for linha, coluna in posicao:
+                if [linha, coluna] in posicao:
+                    return False    
+    return True
+
+
 
