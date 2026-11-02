@@ -21,5 +21,16 @@ def faz_jogada(tabuleiro, linha, coluna):
         tabuleiro[linha][coluna]='X'
     return tabuleiro
     
-    
+def posiciona_frota(dic):
+    tabuleiro = [[0 for _ in range(10)] for _ in range(10)]
+    l=0
+    c=0
+    for tipo in dic.keys():
+        for navio in dic[tipo]:
+            for pos in dic[tipo][navio]:
+                l=dic[tipo][navio][pos][0]
+                c=dic[tipo][navio][pos][1]
+                tabuleiro[l][c] = 1
+    return tabuleiro
+            
 
