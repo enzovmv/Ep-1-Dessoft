@@ -54,12 +54,13 @@ def posicao_valida(info_navios, linha, coluna, orientacao, tamanho):
     for linha, coluna in posicao:
         if linha < 0 or linha > 9 or coluna < 0 or coluna > 9:
             return False
-    for navio in info_navios.values(): 
-        for posicao in navio:
-            for linha, coluna in posicao:
-                if [linha, coluna] in posicao:
+    for navios in info_navios.values(): 
+        for navio in navios:
+            for localizacao in navio:
+                if localizacao in posicao:
                     return False    
     return True
+
 
 
 
