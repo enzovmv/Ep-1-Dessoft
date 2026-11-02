@@ -92,7 +92,7 @@ for nome in navios.keys():
             frota = preenche_frota(frota, nome, linha, coluna, orientacao, tam)
             contador += 1
         else: 
-            print("Esta posição não está valida!")
+            print("Esta posição não está válida!")
 
 print(frota)
     
