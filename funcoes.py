@@ -36,13 +36,13 @@ def afundados(dic, tabuleiro):
     na=0
     for tipo in dic.keys(): 
         for navio in dic[tipo]:
+            i=0
             for l,c in navio:
-                i=0
                 if tabuleiro[l][c] !='X':
                     i=1
                     break
-                if i==0:
-                    na+=1
+            if i==0:
+                na +=1
     return na
 
 
