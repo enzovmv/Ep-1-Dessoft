@@ -62,20 +62,27 @@ def posicao_valida(info_navios, linha, coluna, orientacao, tamanho):
     return True
 
 
-frota = {} 
-for nome in quantidade.keys():
-    qtd = quantidade[nome]
-    tam = tamanho[nome] 
+navios = {
+    "porta-aviões": [1, 4],
+    "navio-tanque": [2, 3],
+    "contratorpedeiro": [3, 2],
+    "submarino": [4, 1],
+}
+
+frota = {}
+for nome in navios.keys():
+    qtd = navios[nome][0]
+    tam = navios[nome][1]
     contador = 0
     while contador < qtd: 
-        print(f"Insira as informações referentes ao navio {nome} que possui tamanho {tam}.")
+        print(f"Insira as informações referentes ao navio {nome} que possui tamanho {tam}")
         linha = int(input("Linha: "))
         coluna = int(input("Coluna: "))
 
-        if tamanho[nome] == 1:
+        if tam == 1:
             orientacao = "vertical"
         else:
-            opcao = int(input("Escolha a orientação do navio [1-vertical, 2-horizontal]: "))
+            opcao = int(input(" [1] Vertical [2] Horizontal: "))
             if opcao == 1:
                 orientacao = "vertical"
             else:
@@ -85,7 +92,7 @@ for nome in quantidade.keys():
             frota = preenche_frota(frota, nome, linha, coluna, orientacao, tam)
             contador += 1
         else: 
-            print("Posição inválida. Tente novamente.")
+            print("Esta posição não está valida!")
 
 print(frota)
     
