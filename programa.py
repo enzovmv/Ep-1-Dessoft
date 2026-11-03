@@ -76,23 +76,24 @@ jogadas=[]
 
 while jogando:
     print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
-    linha=int(input("Jogador, qual linha deseja atacar? "))
-    while linha < 0 or linha > 9:
-        print("Linha inválida!")
-        linha=int(input("Jogador, qual linha deseja atacar? "))
-    coluna=int(input("Jogador, qual coluna deseja atacar? "))
-    while coluna < 0 or coluna > 9:
-            print("Coluna inválida!")
-            coluna=int(input("Jogador, qual coluna deseja atacar? "))
-    if [linha, coluna] in jogadas:
-        print(f'A posição linha {linha} e coluna {coluna} já foi informada anteriormente!')
-    else:
-        jogadas.append([linha, coluna])
-        tabuleiro_oponente=faz_jogada(tabuleiro_oponente,linha,coluna)
-        if Nnavio==afundados(frota_oponente,tabuleiro_oponente):
-          print('Parabéns! Você derrubou todos os navios do seu oponente!')
-          jogando=False
-
+    while True:
+        linha = int(input('Jogador, qual linha deseja atacar? '))
+        while linha < 0 or linha > 9:
+            print('Linha inválida!')
+            linha = int(input('Jogador, qual linha deseja atacar? '))
+        coluna = int(input('Jogador, qual coluna deseja atacar? '))
+        while coluna < 0 or coluna > 9:
+            print('Coluna inválida!')
+            coluna = int(input('Jogador, qual coluna deseja atacar? '))
+        if [linha, coluna] in jogadas:
+            print(f'A posição linha {linha} e coluna {coluna} já foi informada anteriormente!')
+        else:
+            break
+    jogadas.append([linha, coluna])
+    tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha, coluna)
+    if Nnavio == afundados(frota_oponente, tabuleiro_oponente):
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        jogando = False
 
 
 
