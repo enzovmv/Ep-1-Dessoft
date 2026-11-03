@@ -32,5 +32,72 @@ for nome in navios.keys():
         else: 
             print("Esta posição não está válida!")
 
-print(frota)
+
+frota_oponente = {
+    'porta-aviões': [
+        [[9, 1], [9, 2], [9, 3], [9, 4]]
+    ],
+    'navio-tanque': [
+        [[6, 0], [6, 1], [6, 2]],
+        [[4, 3], [5, 3], [6, 3]]
+    ],
+    'contratorpedeiro': [
+        [[1, 6], [1, 7]],
+        [[0, 5], [1, 5]],
+        [[3, 6], [3, 7]]
+    ],
+    'submarino': [
+        [[2, 7]],
+        [[0, 6]],
+        [[9, 7]],
+        [[7, 6]]
+    ]
+}
+
+tabuleiro_oponente=posiciona_frota(frota_oponente)
+tabuleiro_jogador=posiciona_frota(frota)
+i=0
+jogada=0
+
+while jogada==0:
+    def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
+    texto = ''
+    texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
+    texto += '_______________________________      _______________________________\n'
+
+    for linha in range(len(tabuleiro_jogador)):
+        jogador_info = '  '.join([str(item) for item in tabuleiro_jogador[linha]])
+        oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
+        texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
+    return texto
+    jogadas=[]
+    linha=input("Jogador, qual linha deseja atacar?")
+    while linha < 0 or linha > 9:
+        print("Linha inválida!")
+        linha=input("Jogador, qual linha deseja atacar?")
+    coluna=input("Jogador, qual coluna deseja atacar?")
+    while coluna < 0 or coluna > 9:
+            print("Coluna inválida!")
+            coluna=input("Jogador, qual coluna deseja atacar?")
+    jogadas[i]=[linha,coluna]
+    if jogadas[i] in jogadas:
+        print('A posição linha LINHA e coluna COLUNA já foi informada anteriormente!')
+        linha=input("Jogador, qual linha deseja atacar?")
+        while linha < 0 or linha > 9:
+            print("Linha inválida!")
+            linha=input("Jogador, qual linha deseja atacar?")
+        coluna=input("Jogador, qual coluna deseja atacar?")
+        while coluna < 0 or coluna > 9:
+            print("Coluna inválida!")
+            coluna=input("Jogador, qual coluna deseja atacar?")
+        jogadas[i]=[linha,coluna]
+    tabuleiro_oponente=faz_jogada(tabuleiro_oponente,linha,coluna)
+    if qtd==afundados(frota_oponente,tabuleiro_oponente):
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        jogada=1
+
+
+
+    
+
     
