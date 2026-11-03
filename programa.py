@@ -71,22 +71,22 @@ while jogada==0:
          texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
      return texto
     jogadas=[]
-    linha=input("Jogador, qual linha deseja atacar?")
+    linha=int(input("Jogador, qual linha deseja atacar?"))
     while linha < 0 or linha > 9:
         print("Linha inválida!")
-        linha=input("Jogador, qual linha deseja atacar?")
-    coluna=input("Jogador, qual coluna deseja atacar?")
+        linha=int(input("Jogador, qual linha deseja atacar?"))
+    coluna=int(input("Jogador, qual coluna deseja atacar?"))
     while coluna < 0 or coluna > 9:
             print("Coluna inválida!")
-            coluna=input("Jogador, qual coluna deseja atacar?")
+            coluna=int(input("Jogador, qual coluna deseja atacar?"))
     jogadas[i]=[linha,coluna]
     if jogadas[i] in jogadas:
         print('A posição linha LINHA e coluna COLUNA já foi informada anteriormente!')
-        linha=input("Jogador, qual linha deseja atacar?")
+        linha=int(input("Jogador, qual linha deseja atacar?"))
         while linha < 0 or linha > 9:
             print("Linha inválida!")
-            linha=input("Jogador, qual linha deseja atacar?")
-        coluna=input("Jogador, qual coluna deseja atacar?")
+            linha=int(input("Jogador, qual linha deseja atacar?"))
+        coluna=int(input("Jogador, qual coluna deseja atacar?"))
         while coluna < 0 or coluna > 9:
             print("Coluna inválida!")
             coluna=input("Jogador, qual coluna deseja atacar?")
