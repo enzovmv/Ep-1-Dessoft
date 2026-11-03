@@ -45,6 +45,17 @@ def afundados(dic, tabuleiro):
                 na +=1
     return na
 
+def posicao_valida(info_navios, linha, coluna, orientacao, tamanho): 
+    posicao = define_posicoes(linha, coluna, orientacao, tamanho)
+    for linha, coluna in posicao:
+        if linha < 0 or linha > 9 or coluna < 0 or coluna > 9:
+            return False
+    for navios in info_navios.values(): 
+        for navio in navios:
+            for localizacao in navio:
+                if localizacao in posicao:
+                    return False    
+    return True
 
             
          
