@@ -70,7 +70,7 @@ tabuleiro_jogador=posiciona_frota(frota)
 jogando=True
 Nnavio=0
 for tipos in frota_oponente.values():
-    for navios in frota_oponente[tipos]:
+    for navios in tipos:
         Nnavio+=1
 jogadas=[]
 
