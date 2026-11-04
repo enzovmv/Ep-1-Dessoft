@@ -1,4 +1,6 @@
 from funcoes import * 
+import random
+
 
 navios = {
     "porta-aviões": [1, 4],
@@ -68,11 +70,18 @@ def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
 tabuleiro_oponente=posiciona_frota(frota_oponente)
 tabuleiro_jogador=posiciona_frota(frota)
 jogando=True
-Nnavio=0
+Nnavioop=0
 for tipos in frota_oponente.values():
     for navios in tipos:
-        Nnavio+=1
-jogadas=[]
+        Nnavioop+=1
+Nnaviojog=0
+for tipos in frota.values():
+    for navios in tipos:
+        Nnaviojog+=1
+jogadas_jog=[]
+jogadas_opo=[]
+linhaat=0
+colunaat=0
 
 while jogando:
     print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
@@ -85,15 +94,30 @@ while jogando:
         while coluna < 0 or coluna > 9:
             print('Coluna inválida!')
             coluna = int(input('Jogador, qual coluna deseja atacar? '))
-        if [linha, coluna] in jogadas:
+        if [linha, coluna] in jogadas_jog:
             print(f'A posição linha {linha} e coluna {coluna} já foi informada anteriormente!')
         else:
             break
-    jogadas.append([linha, coluna])
+    jogadas_jog.append([linha, coluna])
     tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha, coluna)
-    if Nnavio == afundados(frota_oponente, tabuleiro_oponente):
+    if Nnavioop == afundados(frota_oponente, tabuleiro_oponente):
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         jogando = False
+    else:
+        linhaat=random.randint(0, 9)
+        colunaat=random.randint(0, 9)
+        while [linhaat, colunaat] in jogadas_opo:
+            linhaat=random.randint(0, 9)
+            colunaat=random.randint(0, 9)  
+        jogadas_opo.append([linhaat, colunaat])
+        print(f'Seu oponente está atacando na linha {linhaat} e coluna {colunaat}')
+        tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linhaat, colunaat)
+        if Nnaviojog == afundados(frota, tabuleiro_jogador):
+            print('Xi! O oponente derrubou toda a sua frota =(')
+            jogando = False
+
+
+
 
 
 
